@@ -15,4 +15,32 @@ public class LoginUtils {
         boolean hasAtSign=email.indexOf("@")>-1;
         return hasAtSign;
     }
+
+    /**
+     * Method to check if entered password is atleast of
+     * length 8
+     * @param password
+     * @return
+     */
+    public boolean checkPasswordSize(String password){
+        return password.length()>=8;
+    }
+
+    /**
+     *
+     * Method to check if password has all space character
+     * @param password
+     * @return
+     */
+    public boolean checkAllSpacesInPassword(String password){
+        if(password.length()==0){
+            return false;
+        }
+        for (int i=0;i<password.length();i++){
+            if(password.charAt(i)!=' '){
+                return false;
+            }
+        }
+        return true;
+    }
 }

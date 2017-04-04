@@ -20,4 +20,28 @@ public class LoginUtilsTest {
     public void isEmailAddressValid() throws Exception {
         assertTrue(loginUtils.isValidEmailAddress("as@b.c"));
     }
+
+    /**
+     * Requirement 6
+     * Test to test if the password length is atleast of 8 character
+     * @throws Exception
+     */
+    @Test
+    public void isPasswordSizeValid () throws Exception{
+        assertTrue(loginUtils.checkPasswordSize("12345678"));
+        assertFalse(loginUtils.checkPasswordSize("123"));
+        assertFalse(loginUtils.checkPasswordSize(""));
+    }
+
+    /**
+     * Requirement 7
+     * Test if password is all spaces
+     * @throws Exception
+     */
+    @Test
+    public void isPasswordAllSpace() throws Exception{
+        assertTrue(loginUtils.checkAllSpacesInPassword("       "));
+        assertFalse(loginUtils.checkAllSpacesInPassword("   l    "));
+        assertFalse(loginUtils.checkAllSpacesInPassword(""));
+    }
 }
