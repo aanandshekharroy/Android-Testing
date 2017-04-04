@@ -16,9 +16,20 @@ public class LoginUtilsTest {
     public void setUp(){
         loginUtils=new LoginUtils();
     }
+
+    /**
+     * Requirement 8
+     * Test if the email is according to following criteria.
+     * --- has an "@" sign,
+     * --- has at least 1 character before the "@" sign,
+     * --- has at least 3 characters, including a "." after the "@" sign
+     * @throws Exception
+     */
     @Test
     public void isEmailAddressValid() throws Exception {
-        assertTrue(loginUtils.isValidEmailAddress("as@b.c"));
+        assertTrue(loginUtils.isValidEmailAddress("a@bcc.sd"));
+        assertFalse(loginUtils.isValidEmailAddress("@b.c"));
+        assertFalse(loginUtils.isValidEmailAddress("as@b."));
     }
 
     /**

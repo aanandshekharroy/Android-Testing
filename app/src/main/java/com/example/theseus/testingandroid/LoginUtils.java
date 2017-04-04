@@ -7,13 +7,27 @@ package com.example.theseus.testingandroid;
 public class LoginUtils {
 
     /**
-     * A simple method to check if email address is valid
+     * A simple method to check if email address is valid according to
+     * following criteria.
+     * --- has an "@" sign,
+     * --- has at least 1 character before the "@" sign,
+     * --- has at least 3 characters, including a "." after the "@" sign
      * @param email
      * @return
      */
     public boolean isValidEmailAddress(String email){
-        boolean hasAtSign=email.indexOf("@")>-1;
-        return hasAtSign;
+        int index_of_at=email.indexOf("@");
+        if(index_of_at==-1){
+            return false;
+        }
+        if(index_of_at==0){
+            return false;
+        }
+        String sub_string=email.substring(index_of_at);
+        if(sub_string.length()>3&&sub_string.contains(".")){
+            return true;
+        }
+        return false;
     }
 
     /**
