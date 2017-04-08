@@ -1,6 +1,10 @@
 # Android-Testing
-#### Project under the "Engineering Maintainable Android Apps" course on Coursera
-###### The requirement was to write unit tests and UI tests using Espresso for the following requirements
+#### Project under the "Engineering Maintainable Android Apps" course on Coursera.
+##### Installation
+- Clone this repository.
+- Open it in Android-studio and sync the project.
+
+##### The requirement was to write unit tests and UI tests using Espresso for the following requirements
 - The LoginActivity must have a place for the user to enter their email address
 - The LoginActivity must have a place for the user to enter their password
 - The LoginActivity must not display the password in plain text
@@ -31,3 +35,8 @@ name of the tests that are used to verify each requirement
 - To demonstrate that all requirements are covered, the test methods that check a given
 requirement should have a method-level comment indicating the requirements being tested, as
 shown below:
+## Screenshots
+![screen](../master/assets/1.png)
+![screen](../master/assets/2.png)
+![screen](../master/assets/3.png)
+![screen](../master/assets/4.png)

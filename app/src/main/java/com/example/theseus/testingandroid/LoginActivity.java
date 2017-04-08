@@ -5,12 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText email;
+    AutoCompleteTextView email;
     EditText password;
     Button login;
     TextView error;
@@ -18,9 +19,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        email=(EditText)findViewById(R.id.email);
+        email=(AutoCompleteTextView)findViewById(R.id.email);
         password=(EditText)findViewById(R.id.password);
-        login=(Button) findViewById(R.id.login);
+        login=(Button) findViewById(R.id.email_sign_in_button);
         error=(TextView)findViewById(R.id.error);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
