@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -73,6 +74,67 @@ public class LoginActivityEspressoTest {
     @Test
     public void checkLoginButtonText() throws Exception{
         onView(withId(R.id.login)).check(matches(withText("Login")));
+    }
+
+    /**
+     * Test for Requirement:
+     * When the login button is clicked, the activity should check that the password is at least 8
+     characters long and display the error message "The provided password is too short" if the
+     password is too short
+     * @throws Exception
+     */
+    @Test
+    public void checkPasswordTooShortError() throws Exception{
+        onView(withId(R.id.email)).perform(typeText("a@b.c"));
+        onView(withId(R.id.password)).perform(typeText("abc"));
+        onView(withId(R.id.login)).perform(click());
+        onView(withId(R.id.error)).check(matches(isDisplayed()));
+        onView(withId(R.id.error)).check(matches(withText(R.string.password_length_too_small)));
+    }
+
+    /**
+     * Test for requirement
+     * When the login button is clicked, the activity should check that the password is not all spaces
+     and display the error message "The provided password is invalid" if the password is all spaces
+     * @throws Exception
+     */
+    @Test
+    public void checkAllSpacesInPassword() throws Exception{
+        onView(withId(R.id.email)).perform(typeText("a@b.c"));
+        onView(withId(R.id.password)).perform(typeText("          "));
+        onView(withId(R.id.login)).perform(click());
+        onView(withId(R.id.error)).check(matches(isDisplayed()));
+        onView(withId(R.id.error)).check(matches(withText(R.string.password_all_spaces)));
+    }
+
+    /**
+     * When the login button is clicked, the activity should check that the email address: a) has an
+     "@" sign, b) has at least 1 character before the "@" sign, and c) has at least 3 characters,
+     including a "." after the "@" sign
+     * @throws Exception
+     */
+    @Test
+    public void checkValidEmailAddress() throws Exception{
+        onView(withId(R.id.email)).perform(typeText("a@bd"));
+        onView(withId(R.id.password)).perform(typeText("123456789"));
+        onView(withId(R.id.login)).perform(click());
+        onView(withId(R.id.error)).check(matches(isDisplayed()));
+        onView(withId(R.id.error)).check(matches(withText(R.string.invalid_email)));
+    }
+
+    /**
+     * Test for requirement
+     * If the email address and password are valid, the success message "Login success" should be
+     displayed
+     * @throws Exception
+     */
+    @Test
+    public void checkLoginSuccess() throws Exception{
+        onView(withId(R.id.email)).perform(typeText("a@b.d"));
+        onView(withId(R.id.password)).perform(typeText("123456789"));
+        onView(withId(R.id.login)).perform(click());
+        onView(withId(R.id.error)).check(matches(isDisplayed()));
+        onView(withId(R.id.error)).check(matches(withText(R.string.login_success)));
     }
 
 }

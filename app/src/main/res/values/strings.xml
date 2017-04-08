@@ -3,4 +3,8 @@
     <string name="login">Login</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
+    <string name="invalid_email">Email is invalid</string>
+    <string name="password_length_too_small">The provided password is too short.</string>
+    <string name="password_all_spaces">The provided password is invalid</string>
+    <string name="login_success">Login success.</string>
 </resources>

@@ -15,7 +15,7 @@ public class LoginUtils {
      * @param email
      * @return
      */
-    public boolean isValidEmailAddress(String email){
+    public static boolean isValidEmailAddress(String email){
         int index_of_at=email.indexOf("@");
         if(index_of_at==-1){
             return false;
@@ -36,7 +36,7 @@ public class LoginUtils {
      * @param password
      * @return
      */
-    public boolean checkPasswordSize(String password){
+    public static boolean checkPasswordSize(String password){
         return password.length()>=8;
     }
 
@@ -46,7 +46,7 @@ public class LoginUtils {
      * @param password
      * @return
      */
-    public boolean checkAllSpacesInPassword(String password){
+    public static boolean checkAllSpacesInPassword(String password){
         if(password.length()==0){
             return false;
         }
