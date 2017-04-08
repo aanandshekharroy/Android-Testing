@@ -46,7 +46,7 @@ public class LoginUtils {
      * @param password
      * @return
      */
-    public static boolean checkAllSpacesInPassword(String password){
+    public static boolean isPasswordAllSpace(String password){
         if(password.length()==0){
             return false;
         }

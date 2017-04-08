@@ -3,6 +3,7 @@ package com.example.theseus.testingandroid;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +35,8 @@ public class LoginActivity extends AppCompatActivity {
                     error.setVisibility(View.VISIBLE);
                     error.setText(getString(R.string.password_length_too_small));
                 }
-                else if(!LoginUtils.checkAllSpacesInPassword(passwordText)){
+                else if(LoginUtils.isPasswordAllSpace(passwordText)){
+                    Log.d("LoginActivity","invalid");
                     error.setVisibility(View.VISIBLE);
                     error.setText(getString(R.string.password_all_spaces));
                 }else {
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         error.setTextColor(getColor(R.color.blue_500));
                     }
+                    Log.d("LoginActivity","valid");
                     error.setText(getString(R.string.login_success));
                 }
 

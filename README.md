@@ -1,6 +1,6 @@
 # Android-Testing
 #### Project under the "Engineering Maintainable Android Apps" course on Coursera
-###### The requirement was to write unit tests and instrumentation test for the following requirements
+###### The requirement was to write unit tests and UI tests using Espresso for the following requirements
 - The LoginActivity must have a place for the user to enter their email address
 - The LoginActivity must have a place for the user to enter their password
 - The LoginActivity must not display the password in plain text

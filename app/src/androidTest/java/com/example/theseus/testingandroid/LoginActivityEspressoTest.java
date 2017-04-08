@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -85,8 +86,8 @@ public class LoginActivityEspressoTest {
      */
     @Test
     public void checkPasswordTooShortError() throws Exception{
-        onView(withId(R.id.email)).perform(typeText("a@b.c"));
-        onView(withId(R.id.password)).perform(typeText("abc"));
+        onView(withId(R.id.email)).perform(typeText("a@b.c"),closeSoftKeyboard());
+        onView(withId(R.id.password)).perform(typeText("abc"), closeSoftKeyboard());
         onView(withId(R.id.login)).perform(click());
         onView(withId(R.id.error)).check(matches(isDisplayed()));
         onView(withId(R.id.error)).check(matches(withText(R.string.password_length_too_small)));
@@ -100,8 +101,8 @@ public class LoginActivityEspressoTest {
      */
     @Test
     public void checkAllSpacesInPassword() throws Exception{
-        onView(withId(R.id.email)).perform(typeText("a@b.c"));
-        onView(withId(R.id.password)).perform(typeText("          "));
+        onView(withId(R.id.email)).perform(typeText("a@b.c"), closeSoftKeyboard());
+        onView(withId(R.id.password)).perform(typeText("          "), closeSoftKeyboard());
         onView(withId(R.id.login)).perform(click());
         onView(withId(R.id.error)).check(matches(isDisplayed()));
         onView(withId(R.id.error)).check(matches(withText(R.string.password_all_spaces)));
@@ -115,8 +116,8 @@ public class LoginActivityEspressoTest {
      */
     @Test
     public void checkValidEmailAddress() throws Exception{
-        onView(withId(R.id.email)).perform(typeText("a@bd"));
-        onView(withId(R.id.password)).perform(typeText("123456789"));
+        onView(withId(R.id.email)).perform(typeText("a@bd"),closeSoftKeyboard());
+        onView(withId(R.id.password)).perform(typeText("123456789"),closeSoftKeyboard());
         onView(withId(R.id.login)).perform(click());
         onView(withId(R.id.error)).check(matches(isDisplayed()));
         onView(withId(R.id.error)).check(matches(withText(R.string.invalid_email)));
@@ -130,8 +131,8 @@ public class LoginActivityEspressoTest {
      */
     @Test
     public void checkLoginSuccess() throws Exception{
-        onView(withId(R.id.email)).perform(typeText("a@b.d"));
-        onView(withId(R.id.password)).perform(typeText("123456789"));
+        onView(withId(R.id.email)).perform(typeText("a@b.d"),closeSoftKeyboard());
+        onView(withId(R.id.password)).perform(typeText("123456789"),closeSoftKeyboard());
         onView(withId(R.id.login)).perform(click());
         onView(withId(R.id.error)).check(matches(isDisplayed()));
         onView(withId(R.id.error)).check(matches(withText(R.string.login_success)));

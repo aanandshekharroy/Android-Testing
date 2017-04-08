@@ -51,8 +51,9 @@ public class LoginUtilsTest {
      */
     @Test
     public void isPasswordAllSpace() throws Exception{
-        assertTrue(loginUtils.checkAllSpacesInPassword("       "));
-        assertFalse(loginUtils.checkAllSpacesInPassword("   l    "));
-        assertFalse(loginUtils.checkAllSpacesInPassword(""));
+        assertTrue(loginUtils.isPasswordAllSpace("       "));
+        assertFalse(loginUtils.isPasswordAllSpace("   l    "));
+        assertFalse(loginUtils.isPasswordAllSpace(""));
+        assertFalse(loginUtils.isPasswordAllSpace("123456789"));
     }
 }
